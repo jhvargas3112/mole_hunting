@@ -1,0 +1,4 @@
+-record(game_state, {g=digraph:new(), moles=[], snakes=[], worms=[], visited_hideouts=sets:new()}).
+-record(mole, {name, base_hideout, current_hideout, has_eaten=false}).
+-record(snake, {name, current_edge}).
+-record(worm, {name, current_hideout}).
