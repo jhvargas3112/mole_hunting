@@ -1,4 +1,4 @@
-% Implementación de un grafo no dirigido, utilizando el módulo digraph.
+% Implementation of an directed graph, using the digraph module.
 
 -module(graph).
 -export([new/0, add_vertex/2, has_vertex/2, has_edge/2, add_edge/3, vertices/1, 
@@ -42,14 +42,14 @@ edges(G) ->
 		)
 	).
 
-% Dos vértices son adyacentes si tienen una arista que los une.
+% Two vertices are adjacent if both have an edge that joins them.
 is_adjacent_vertex(V1, V2, G) ->
 	has_edge({V1, V2}, G).
 
 adjacent_vertices_to(V, G) ->
 	lists:filter(fun(W) -> is_adjacent_vertex(V, W, G) end, vertices(G)).
 
-% O(n).
+% O(n) time complexity.
 is_adjacent_edge(E1, E2, G) ->
 	case (has_edge(E1, G)) of
 		true ->
@@ -62,7 +62,7 @@ is_adjacent_edge(E1, E2, G) ->
 			false
 	end.
 
-% O(n).
+% O(n) time complexity.
 adjacent_edges_to(E, G) ->
 	case (graph:has_edge(E, G)) of
 		true ->
@@ -76,8 +76,8 @@ adjacent_edges_to(E, G) ->
 			[]
 	end.
 
-% O(1).
-% Dos aristas son adyacentes si tienen un vértice en común.
+% O(1) time complexity.
+% Two edges are adjacent if they have a common vertex.
 has_common_verterx(E1, E2) ->
 	{Vu, Vw} = E1,
 

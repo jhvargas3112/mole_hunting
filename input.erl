@@ -2,8 +2,8 @@
 -export([show_mole_game_controls/0,
 	show_snake_game_controls/0, input_loop/2]).
 
-input_loop(NombreTopo, Pid) ->
-	{_, Input, _} = io:scan_erl_exprs(lists:append(atom_to_list(NombreTopo), ">")),
+input_loop(MoleName, Pid) ->
+	{_, Input, _} = io:scan_erl_exprs(lists:append(atom_to_list(MoleName), ">")),
 
 	{Status, ErlangTerm} = erl_parse:parse_term(Input),
 
@@ -41,11 +41,11 @@ input_loop(NombreTopo, Pid) ->
 							ok
 						end
 				end,
-				input_loop(NombreTopo, Pid)
+				input_loop(MoleName, Pid)
 			end;
 		error ->
 			io:format("Wrong input. It must be an Erlang term\n"),
-			input_loop(NombreTopo, Pid)
+			input_loop(MoleName, Pid)
 	end.
 
 show_mole_game_controls() ->
